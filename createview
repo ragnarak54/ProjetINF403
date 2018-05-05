@@ -1,0 +1,6 @@
+alter session set current_schema=JO_INF245;
+
+create view sowersc.lesdossiers as
+	select nDossier, nUtil, dateEmission, sum(prix) prix from JO_INF245.LesDossiers_base
+	natural join JO_INF245.LesBillets natural join JO_INF245.LesEpreuves 
+	group by nDossier, nUtil, dateEmission;
