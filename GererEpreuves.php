@@ -30,12 +30,17 @@
 				  $discipline = oci_result($curseur, 1);
 				  echo ("<option value=\"$discipline\">$discipline</option>");
 			} while($res = oci_fetch ($curseur));
-	echo (" </select>
+	echo (" 
+			<option value=\"autre\">Autre</option>
+			</select>
 		  
 			<br />
 	  
 			<br />
 			
+			<label for=\"inp_autre\">Autre discipline (à laisser vide si une discipline déjà existant sélectionnée):</label>
+			<input type=\"text\" name = \"autre\" />
+			<br /><br />
 			<label for=\"inp_nom\">Veuillez saisir un nom
 			:</label>
 			<input type=\"text\" name=\"name\" />
@@ -69,7 +74,7 @@
 
 			<br />
 			
-			<label for=\"inp_date\">Veuillez saisir une date
+			<label for=\"inp_date\">Veuillez saisir une date (DD-MM-YY)
 			:</label>
 			<input type=\"text\" name=\"dateEpreuve\" />
 			

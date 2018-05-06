@@ -8,7 +8,25 @@
 	$prix = $_POST['prix'];
 	$titre = "Gérer les épreuves";
 	include ('entete.php');
-	
+	if($discipline == 'autre')
+	{
+		$discipline = $_POST['autre'];
+		$newDisc = "INSERT into lesdisciplines values (:disciplin)";
+		$disccur = oci_parse($lien, $newDisc);
+		oci_bind_by_name($disccur, ":disciplin", $discipline);
+		$ok = @oci_execute($disccur);
+		if($ok)
+		{
+			echo "Nouvelle discipline crée <br />";
+			oci_commit($lien);
+		}
+		else
+		{
+			$error_message = oci_error($curseurIns);
+			echo "<p class=\"erreur\">{$error_message['message']}</p>";
+			oci_rollback($lien);
+		}
+	}
 	$requete1 = ("
 		SELECT max(nepreuve)
 		FROM sowersc.LesEpreuves
