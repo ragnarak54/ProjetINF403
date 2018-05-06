@@ -45,7 +45,7 @@
 	
 		if($okIns) 
 		{
-			echo "Enregistrement effectue" ;
+			echo "Enregistrement du sportif effectue !<br />" ;
 			
 			$requete = ("
 				with R1 as (
@@ -62,10 +62,7 @@
 
 			$curseurIns = oci_parse ($lien, $insertion);
 			$nombat = oci_result($curseur1, 1);
-			echo $nombat;
 			$nlogement = oci_result($curseur1, 2);
-			echo $nlogement;
-			echo $nsportif;
 			$ok1 = oci_bind_by_name($curseurIns, ':nsportif', $nsportif);
 			$ok2 = oci_bind_by_name($curseurIns, ':nombat', $nombat);
 			$ok3 =oci_bind_by_name($curseurIns, ':nlogement', $nlogement);
@@ -78,9 +75,9 @@
 			{
 				$okIns = @oci_execute($curseurIns);
 					if($okIns) {
-						echo "Enregistrement effectue" ;
+						echo "Enregistrement du logement effectue! <br />" ;
 						echo ("
-							\"$nsportif\" a ete mis dans \"$nlogement\" dans le batiment \"$nombat\"	
+							$nsportif a ete mis dans le logement $nlogement du batiment $nombat	
 							");
 						oci_commit($lien) ; } 
 					else

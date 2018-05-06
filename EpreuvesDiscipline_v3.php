@@ -1,5 +1,5 @@
 <?php
-
+	session_start();
 	$titre = 'Liste des épreuves associées à un dossier donné pour une discipline donnée, et nombre de billets pour chacune';
 	include('entete.php');
    $requete = ("
