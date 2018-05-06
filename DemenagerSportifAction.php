@@ -26,10 +26,7 @@
 
 		$curseurIns = oci_parse ($lien, $insertion);
 		$nombat = oci_result($curseur, 1);
-		echo $nombat;
 		$nlogement = oci_result($curseur, 2);
-		echo $nlogement;
-		echo $nsportif;
 		$ok1 = oci_bind_by_name($curseurIns, ':nsportif', $nsportif);
 		$ok2 = oci_bind_by_name($curseurIns, ':nombat', $nombat);
 		$ok3 =oci_bind_by_name($curseurIns, ':nlogement', $nlogement);
@@ -44,7 +41,7 @@
 		if($okIns and $okDel)
 		{
 			echo ("
-				\"$nsportif\" a ete mis dans \"$nlogement\" dans le batiment \"$nombat\"	
+				<h3> \"$nsportif\" a ete mis dans \"$nlogement\" dans le batiment \"$nombat\" </h3>
 				");
 			oci_commit($lien) ; 
 		}

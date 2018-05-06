@@ -1,5 +1,7 @@
 <?php
-	$ndossier = $_POST['nDossier'];
+	session_start();
+	$_SESSION['ndossier'] = $_POST['nDossier'];
+	$ndossier = $_SESSION['ndossier'];
 	$titre = 'Etape 2';
 	include('entete.php');
    $requete = ("
